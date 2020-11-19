@@ -1,11 +1,6 @@
-table=[[] for i in range(2)]
-table[0].append(2)
-table[0].append(4)
-table[0].append(6)
-table[1].append(8)
-table[1].append(10)
-table[1].append(12)
-
-print(table)
-
-
+list = [[10, 11, 12],[13, 14, 15],[16, 17, 18]]
+print("Table: ")
+for row in list:
+    for column in row:
+        print(column,end=' ')
+    print("\n",end='')
