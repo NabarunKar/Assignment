@@ -1,6 +1,6 @@
 import pattern
-pattern.Pypart(6)
-pattern.Triangle(5)
-pattern.Pypart2(3)
-pattern.NumPattern(8)
-pattern.ContinuosNum(5)
+pattern.Pypart(int(input("Enter range: ")))
+pattern.Triangle(int(input("Enter range: ")))
+pattern.Pypart2(int(input("Enter range: ")))
+pattern.NumPattern(int(input("Enter range: ")))
+pattern.ContinuosNum(int(input("Enter range: ")))
