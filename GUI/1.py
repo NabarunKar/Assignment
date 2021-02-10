@@ -1,141 +1,73 @@
+import tkinter as tk 
+from tkinter import ttk
 from tkinter import *
+from tkinter import messagebox
 
+# Creating tkinter window 
+window = tk.Tk() 
+window.title('Film Club Registration') 
+window.geometry('500x250')
+icon=tk.PhotoImage(file="C:/Users/Nabarun Kar/Desktop/STCET/2nd Year/3rd sem/Prog/10.2.2021/1.png") #taking the image and storing it
+#displaying the image
+label=tk.Label(window,image=icon)
+label.grid(column=0,row=0) 
 
-expression = "" 
+# label text for title 
+ttk.Label(window, text = "Film Club Registration", 
+		background = 'yellow', foreground ="black", 
+		font = ("Times New Roman", 15)).grid(row = 0, column = 1) 
 
+# label 
+ttk.Label(window, text = "Select the option that describes you best :", 
+		font = ("Times New Roman", 10)).grid(column = 0, 
+		row = 5, padx = 10, pady = 25) 
 
-def press(num): 
+# Combobox creation 
+n = tk.StringVar() 
+choice = ttk.Combobox(window, width = 27, textvariable = n) 
 
-	global expression 
+# Adding combobox drop down list 
+choice['values'] = (' Film student', 
+						' Film crew', 
+						' Film enthusiast') 
 
-	
-	expression = expression + str(num) 
-
-
-	equation.set(expression) 
-
-
-
-def equalpress(): 
-	
-
-	
-	try: 
-
-		global expression 
-
-		
-		total = str(eval(expression)) 
-
-		equation.set(total) 
-
-		
-		expression = "" 
-
-	
-	except: 
-
-		equation.set(" error ") 
-		expression = "" 
-
-
-
-def clear(): 
-	global expression 
-	expression = "" 
-	equation.set("") 
+choice.grid(column = 1, row = 5) 
+choice.current() 
+#radiobutton
+ttk.Label(window, text = "How many films do you watch per week?",  
+		font = ("Times New Roman", 15)).grid(row = 29, column = 0)
+rad1=Radiobutton(window,text="1-5",value=1)
+rad2=Radiobutton(window,text="6-10",value=2)
+rad3=Radiobutton(window,text="More than 10",value=3)
+rad1.grid(column=0,row=30)
+rad2.grid(column=1,row=30)
+rad3.grid(column=2,row=30)
+#message box
 
 
 
-if __name__ == "__main__": 
-	
-	gui = Tk() 
+def clicked():
+	messagebox.showinfo('Rules','Rules will show here')
+bt=Button(window,text="Rules",command=clicked)
+bt.grid(row=35,column=1)
 
-	
-	gui.configure(background="light green") 
+#checkbutton widget
+ttk.Label(window, text = "Check this box if you want to receive our weekly newsletter.",  
+		font = ("Times New Roman", 15)).grid(row = 36, column = 0)
+chk_state=BooleanVar() #variable of type BooleanVar
+chk_state.set (True) # checked by default
+chk=Checkbutton(window,text='I agree',var=chk_state) #passing the
+#chk_state to the Checkbutton class to set the check state
+chk.grid(column=0,row=37)
 
-	
-	gui.title("Simple Calculator") 
+#entry field
 
-	
-	gui.geometry("270x150") 
+tk.Label(window, text="Enter your email address:").grid(row=38)
 
-	
-	equation = StringVar() 
 
-	
-	expression_field = Entry(gui, textvariable=equation) 
+e1 = tk.Entry(window)
 
-	
-	expression_field.grid(columnspan=4, ipadx=70)
 
-	 
-	button1 = Button(gui, text=' 1 ', fg='black', bg='red', 
-					command=lambda: press(1), height=1, width=7) 
-	button1.grid(row=2, column=0) 
+e1.grid(row=39, column=0)
 
-	button2 = Button(gui, text=' 2 ', fg='black', bg='red', 
-					command=lambda: press(2), height=1, width=7) 
-	button2.grid(row=2, column=1) 
-
-	button3 = Button(gui, text=' 3 ', fg='black', bg='red', 
-					command=lambda: press(3), height=1, width=7) 
-	button3.grid(row=2, column=2) 
-
-	button4 = Button(gui, text=' 4 ', fg='black', bg='red', 
-					command=lambda: press(4), height=1, width=7) 
-	button4.grid(row=3, column=0) 
-
-	button5 = Button(gui, text=' 5 ', fg='black', bg='red', 
-					command=lambda: press(5), height=1, width=7) 
-	button5.grid(row=3, column=1) 
-
-	button6 = Button(gui, text=' 6 ', fg='black', bg='red', 
-					command=lambda: press(6), height=1, width=7) 
-	button6.grid(row=3, column=2) 
-
-	button7 = Button(gui, text=' 7 ', fg='black', bg='red', 
-					command=lambda: press(7), height=1, width=7) 
-	button7.grid(row=4, column=0) 
-
-	button8 = Button(gui, text=' 8 ', fg='black', bg='red', 
-					command=lambda: press(8), height=1, width=7) 
-	button8.grid(row=4, column=1) 
-
-	button9 = Button(gui, text=' 9 ', fg='black', bg='red', 
-					command=lambda: press(9), height=1, width=7) 
-	button9.grid(row=4, column=2) 
-
-	button0 = Button(gui, text=' 0 ', fg='black', bg='red', 
-					command=lambda: press(0), height=1, width=7) 
-	button0.grid(row=5, column=0) 
-
-	plus = Button(gui, text=' + ', fg='black', bg='red', 
-				command=lambda: press("+"), height=1, width=7) 
-	plus.grid(row=2, column=3) 
-
-	minus = Button(gui, text=' - ', fg='black', bg='red', 
-				command=lambda: press("-"), height=1, width=7) 
-	minus.grid(row=3, column=3) 
-
-	multiply = Button(gui, text=' * ', fg='black', bg='red', 
-					command=lambda: press("*"), height=1, width=7) 
-	multiply.grid(row=4, column=3) 
-
-	divide = Button(gui, text=' / ', fg='black', bg='red', 
-					command=lambda: press("/"), height=1, width=7) 
-	divide.grid(row=5, column=3) 
-
-	equal = Button(gui, text=' = ', fg='black', bg='red', 
-				command=equalpress, height=1, width=7) 
-	equal.grid(row=5, column=2) 
-
-	clear = Button(gui, text='Clear', fg='black', bg='red', 
-				command=clear, height=1, width=7) 
-	clear.grid(row=5, column='1') 
-
-	Decimal= Button(gui, text='.', fg='black', bg='red', 
-					command=lambda: press('.'), height=1, width=7) 
-	Decimal.grid(row=6, column=0) 
-	
-	gui.mainloop() 
+window.mainloop() 
